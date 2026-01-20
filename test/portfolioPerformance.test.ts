@@ -14,7 +14,7 @@ describe("GET api/v1/performance", () => {
         performanceSummary: "The portfolio has has solid gains with a profit of $2000"
       });
 
-  it("should return error 400 if fields are invalid", async () => {
+  it("should return error 400 if query params are invalid", async () => {
     const response: Response = await request(app).get("/api/v1/performance?initialInvestment=&currentValue=hi")
 
   })

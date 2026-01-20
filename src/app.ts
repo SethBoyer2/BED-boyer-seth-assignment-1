@@ -27,6 +27,10 @@ app.get("/api/v1/performance", (request, response) => {
     const initialInvestment = Number(initialInvestmentInput)
     const currentValue = Number(currentValueInput)
 
+    if(Number.isNaN(initialInvestment) || Number.isNaN(currentValue)) {
+        return response.status(400).send({ error: "Error 400: Query parameter is invalid or NaN" })
+    }
+
     let output: any = calculatePortfolioPerformance(initialInvestment, currentValue)
     response.json(output)
 })

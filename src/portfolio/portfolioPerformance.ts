@@ -1,3 +1,5 @@
+import { error } from "node:console"
+
 interface performanceOutput {
     initialInvestment: number
     currentValue: number
