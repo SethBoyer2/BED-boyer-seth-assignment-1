@@ -12,11 +12,25 @@ export function calculatePortfolioPerformance(initialInvestment: number, current
 
     const percentageChange = (profitOrLoss / initialInvestment) * 100;
 
-    let performanceSummary;
-    if (percentageChange > 20) {
-        performanceSummary = `The portfolio has gained significantly with a profit of $${profitOrLoss}.`;
-    } else {
-        performanceSummary = `The portfolio has performed poorly.`;
+    let performanceSummary: string
+
+
+    switch(percentageChange) {
+        case 1:
+            percentageChange >=30
+            performanceSummary = `The portfolio has gained significantly with a profit of $${profitOrLoss}.`
+        case 2:
+            percentageChange >= 10
+            performanceSummary = `The portfolio has had solid gains with a profit of $${profitOrLoss}.`
+        case 3:
+            percentageChange > 0
+            performanceSummary = `The portfolio has seen modest gains with a profit of $${profitOrLoss}`
+        case 4:
+            percentageChange >= -10
+            performanceSummary = `The portfolio has seen minor losses, with a loss of ${profitOrLoss}`
+
+        default:
+            performanceSummary = `The portfolio has seen significant losses, with a loss of ${profitOrLoss}`
     }
 
     return {

@@ -28,9 +28,7 @@ app.get("/api/v1/performance", (request, response) => {
     const currentValue = Number(currentValueInput)
 
     let output: any = calculatePortfolioPerformance(initialInvestment, currentValue)
-    response.json({
-        output
-    })
+    response.json(output)
 })
 
 

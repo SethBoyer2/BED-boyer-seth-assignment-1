@@ -11,8 +11,13 @@ describe("GET api/v1/performance", () => {
         currentValue: 12000,
         profitOrLoss: 2000,
         percentageChange: 20,
-        performanceSummary: "The portfolio has performed poorly."
+        performanceSummary: "The portfolio has has solid gains with a profit of $2000"
       });
+
+  it("should return error 400 if fields are invalid", async () => {
+    const response: Response = await request(app).get("/api/v1/performance?initialInvestment=&currentValue=hi")
+
+  })
   });
 
   it("should return profit or loss calculation successfully", async () => {
@@ -20,6 +25,8 @@ describe("GET api/v1/performance", () => {
 
     expect(testCase1.profitOrLoss).toEqual(10000)
   });
+
+
 
 });
 
