@@ -1,49 +1,55 @@
 interface performanceOutput {
-    initialInvestment: number
-    currentValue: number
-    profitOrLoss: number
-    percentageChange: number
-    performanceSummary: string
+  initialInvestment: number;
+  currentValue: number;
+  profitOrLoss: number;
+  percentageChange: number;
+  performanceSummary: string;
 }
 
+export function calculatePortfolioPerformance(
+  initialInvestment: number,
+  currentValue: number,
+): performanceOutput {
+  const profitOrLoss = currentValue - initialInvestment;
 
-export function calculatePortfolioPerformance(initialInvestment: number, currentValue: number): performanceOutput {
-    const profitOrLoss = currentValue - initialInvestment;
+  const percentageChange = (profitOrLoss / initialInvestment) * 100;
 
-    const percentageChange = (profitOrLoss / initialInvestment) * 100;
+  let performanceSummary: string;
 
-    let performanceSummary: string
+  switch (true) {
+    case percentageChange >= 30:
+      performanceSummary = `The portfolio has gained significantly with a profit of $${profitOrLoss}.`;
+      break;
+
+    case percentageChange >= 10:
+      performanceSummary = `The portfolio has had solid gains with a profit of $${profitOrLoss}.`;
+      break;
+
+    case percentageChange > 0:
+      performanceSummary = `The portfolio has seen modest gains with a profit of $${profitOrLoss}.`;
+      break;
+
+    case percentageChange == 0:
+        performanceSummary = `The portfolio has broken even.`
+        break;
 
 
-    switch(true) {
-        case (percentageChange >=30):
-            performanceSummary = `The portfolio has gained significantly with a profit of $${profitOrLoss}.`
-            break
+    case percentageChange <= -10:
+      performanceSummary = `The portfolio has seen minor losses, with a loss of $${profitOrLoss}.`;
+      break;
 
-        case (percentageChange >= 10):
-            performanceSummary = `The portfolio has had solid gains with a profit of $${profitOrLoss}.`
-            break
+    default:
+      performanceSummary = `The portfolio has seen significant losses, with a loss of $${profitOrLoss}.`;
+      break;
+  }
 
-        case (percentageChange > 0):
-            performanceSummary = `The portfolio has seen modest gains with a profit of $${profitOrLoss}`
-            break
-
-        case (percentageChange <= -10):
-            performanceSummary = `The portfolio has seen minor losses, with a loss of ${profitOrLoss}`
-            break
-
-        default:
-            performanceSummary = `The portfolio has seen significant losses, with a loss of ${profitOrLoss}`
-            break
-    }
-
-    return {
-        initialInvestment,
-        currentValue,
-        profitOrLoss,
-        percentageChange,
-        performanceSummary,
-    };
+  return {
+    initialInvestment,
+    currentValue,
+    profitOrLoss,
+    percentageChange,
+    performanceSummary,
+  };
 }
 
 // What endpoint URL structure is used -
