@@ -1,3 +1,7 @@
+
+/**
+ * Interface representing the full output of the portfolio performance calculations
+ */
 interface performanceOutput {
   initialInvestment: number;
   currentValue: number;
@@ -6,6 +10,12 @@ interface performanceOutput {
   performanceSummary: string;
 }
 
+/**
+ * Calculates the performance of a financial portfolio
+ * @param initialInvestment - The starting capital in the portfolio
+ * @param currentValue - The current capital in the portfolio
+ * @returns JSON object holding portfolio data
+ */
 export function calculatePortfolioPerformance(
   initialInvestment: number,
   currentValue: number,
@@ -51,29 +61,3 @@ export function calculatePortfolioPerformance(
     performanceSummary,
   };
 }
-
-// What endpoint URL structure is used -
-// Query parameters
-
-// What input parameters the endpoint expects -
-// Initial Investment & Current value
-
-// What fields are returned in the response -
-// Initial Investment, Current value, Profit or loss, Percentage change, performance summary
-
-// What calculations produce those results -
-// Current value - Initial Investment = Profit/loss
-
-// What different summary messages exist and when each one appears -
-// (EQGT30) =>30% = Excellent,
-// (EQGT10) =>10% = Solid,
-// (GT0) >0% = Modest,
-// 0 = No Change,
-// (EQGT) =>-10% = Minor Loss,
-// (LT) <-10% = Significant loss
-
-// My implementation Must:
-// Take query params of initial invest and current val
-// Return init invest, current val, profit or loss, percent change, performance summary
-// Calculate profit/loss
-// Provide feedback based on percent change

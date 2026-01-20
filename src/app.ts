@@ -10,6 +10,11 @@ app.get("/", (request, response) => {
   response.send("Hello, World!");
 });
 
+/**
+ * API health check endpoint
+ * @param path - API endpoint path
+ * @returns - JSON response containing all the details of the health check
+ */
 app.get("/api/v1/health", (request, response) => {
   response.json({
     status: "OK",
@@ -19,6 +24,14 @@ app.get("/api/v1/health", (request, response) => {
   });
 });
 
+/**
+ * Portfolio Performance endpoint
+ * Converts initialInvestment and currentValue to Numbers after grabbing them from the query
+ * @param path - API endpoint path
+ * @returns - JSON response containing the full portfolio performance output
+ * @throws - Error 400 if query parameters are invalid
+ *
+ */
 app.get("/api/v1/performance", (request, response) => {
   const initialInvestmentInput = request.query.initialInvestment;
   const currentValueInput = request.query.currentValue;
