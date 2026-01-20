@@ -29,6 +29,11 @@ export function calculatePortfolioPerformance(
   let performanceSummary: string;
 
   switch (true) {
+
+    case percentageChange >= 50:
+        performanceSummary = `Outstanding performance! Exception returns on your investment`
+        break;
+
     case percentageChange >= 30:
       performanceSummary = `The portfolio has gained significantly with a profit of $${profitOrLoss}.`;
       break;
