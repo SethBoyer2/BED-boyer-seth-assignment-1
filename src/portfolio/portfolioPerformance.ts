@@ -22,7 +22,9 @@ export function calculatePortfolioPerformance(
 ): performanceOutput {
   const profitOrLoss = currentValue - initialInvestment;
 
-  const percentageChange = (profitOrLoss / initialInvestment) * 100;
+  // ternary operator used to cover edge case of initial investment being zero - prevents zero division errors
+  const percentageChange =
+   initialInvestment == 0 ? 0 : (profitOrLoss / initialInvestment) * 100;
 
   let performanceSummary: string;
 
@@ -44,7 +46,7 @@ export function calculatePortfolioPerformance(
         break;
 
 
-    case percentageChange >= -10:
+    case percentageChange >= -10 && percentageChange <0:
       performanceSummary = `The portfolio has seen minor losses, with a loss of $${profitOrLoss}.`;
       break;
 
