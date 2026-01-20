@@ -60,11 +60,11 @@ describe("GET api/v1/performance", () => {
 
   it("should tell you that you have seen minor losses under -10% loss", async () => {
     // Arrange & Act
-    const minorLossCheck = calculatePortfolioPerformance(10000, 8500);
+    const minorLossCheck = calculatePortfolioPerformance(10000, 9000);
 
     // Assert
     expect(minorLossCheck.performanceSummary).toEqual(
-      "The portfolio has seen minor losses, with a loss of $-1500.",
+      "The portfolio has seen minor losses, with a loss of $-1000.",
     );
   });
 
