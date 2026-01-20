@@ -34,7 +34,7 @@ export function calculatePortfolioPerformance(
         break;
 
 
-    case percentageChange <= -10:
+    case percentageChange >= -10:
       performanceSummary = `The portfolio has seen minor losses, with a loss of $${profitOrLoss}.`;
       break;
 
