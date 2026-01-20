@@ -11,12 +11,13 @@ describe("GET api/v1/performance", () => {
         currentValue: 12000,
         profitOrLoss: 2000,
         percentageChange: 20,
-        performanceSummary: "The portfolio has has solid gains with a profit of $2000"
+        performanceSummary: "The portfolio has has solid gains with a profit of $2000."
       });
 
   it("should return error 400 if query params are invalid", async () => {
     const response: Response = await request(app).get("/api/v1/performance?initialInvestment=&currentValue=hi")
 
+    expect(response.status).toBe(400)
   })
   });
 
