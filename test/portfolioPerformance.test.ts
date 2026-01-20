@@ -5,20 +5,21 @@ import { calculatePortfolioPerformance } from "../src/portfolio/portfolioPerform
 describe("GET api/v1/performance", () => {
   it("should return all fields with valid information", async () => {
     const response: Response = await request(app).get("/api/v1/performance?initialInvestment=10000&currentValue=12000");
-    expect(response.body).toEqual
-      ({
-        initialInvestment: 10000,
-        currentValue: 12000,
-        profitOrLoss: 2000,
-        percentageChange: 20,
-        performanceSummary: "The portfolio has has solid gains with a profit of $2000."
-      });
+    expect(response.body).toEqual({
+      initialInvestment: 10000,
+      currentValue: 12000,
+      profitOrLoss: 2000,
+      percentageChange: 20,
+      performanceSummary: "The portfolio has had solid gains with a profit of $2000."
+    });
+  });
+
+
 
   it("should return error 400 if query params are invalid", async () => {
     const response: Response = await request(app).get("/api/v1/performance?initialInvestment=&currentValue=hi")
 
     expect(response.status).toBe(400)
-  })
   });
 
   it("should return profit or loss calculation successfully", async () => {
@@ -26,8 +27,5 @@ describe("GET api/v1/performance", () => {
 
     expect(testCase1.profitOrLoss).toEqual(10000)
   });
-
-
-
 });
 
